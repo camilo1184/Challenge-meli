@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "cbb5a9a2-d6e0-4a62-ac78-ec424c9d60e1",
+		"name": "Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Local",
+			"item": [
+				{
+					"name": "isMutant",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dna\": [\r\n        \"ATGCGA\",\r\n        \"AAGAGC\",\r\n        \"TTGTTT\",\r\n        \"AGAAGG\",\r\n        \"CCACTA\",\r\n        \"TCACTG\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/challenge/mutant/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"challenge",
+								"mutant",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "stats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/challenge/stats",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"challenge",
+								"stats"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Remote",
+			"item": [
+				{
+					"name": "isMutant",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dna\": [\r\n        \"ATGCGA\",\r\n        \"AAGAGC\",\r\n        \"TTATTT\",\r\n        \"AGAAGG\",\r\n        \"CCACTA\",\r\n        \"TCACTG\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://challengemeli-env.eba-qgnimnum.us-east-2.elasticbeanstalk.com/challenge/mutant/",
+							"protocol": "http",
+							"host": [
+								"challengemeli-env",
+								"eba-qgnimnum",
+								"us-east-2",
+								"elasticbeanstalk",
+								"com"
+							],
+							"path": [
+								"challenge",
+								"mutant",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "stats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://challengemeli-env.eba-qgnimnum.us-east-2.elasticbeanstalk.com/challenge/stats",
+							"protocol": "http",
+							"host": [
+								"challengemeli-env",
+								"eba-qgnimnum",
+								"us-east-2",
+								"elasticbeanstalk",
+								"com"
+							],
+							"path": [
+								"challenge",
+								"stats"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,1 @@
+insert into stats (id, is_mutant, not_mutant) values (1,0,0);

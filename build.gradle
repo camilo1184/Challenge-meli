@@ -1,0 +1,93 @@
+plugins {
+	id 'org.springframework.boot' version '2.3.12.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id 'jacoco'
+	id 'maven'
+}
+
+group = 'com.meli'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	set('springCloudVersion', "Hoxton.SR11")
+}
+
+configurations {
+	all*.exclude module: 'spring-boot-starter-json'
+	all*.exclude module: 'failureaccess'
+	all*.exclude module: 'protobuf-java'
+	all*.exclude module: 'aspectjweaver'
+	all*.exclude module: 'bcprov-jdk15on'
+	all*.exclude module: 'bcpkix-jdk15on'
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	compile('org.springframework.cloud:spring-cloud-starter-config')
+
+	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+
+	runtimeOnly 'com.h2database:h2'
+
+	compileOnly 'org.projectlombok:lombok:1.18.20'
+	annotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+	testCompileOnly 'org.projectlombok:lombok:1.18.20'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+	testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.2.0'
+
+	testCompile 'org.junit.jupiter:junit-jupiter-engine:5.2.0'
+	testCompile('org.mockito:mockito-junit-jupiter:2.23.0')
+
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
+
+test {
+	useJUnitPlatform()
+}
+
+jacoco {
+	toolVersion = "0.8.1"
+}
+
+test {
+	finalizedBy jacocoTestReport // report is always generated after tests run
+}
+
+jacocoTestReport {
+	reports {
+		xml.required = false
+		csv.required = false
+		html.outputLocation = layout.buildDirectory.dir('reports/tests/jacocoHtml')
+	}
+
+	afterEvaluate {
+		classDirectories.setFrom(files(classDirectories.files.collect {
+			fileTree(dir: it,
+					exclude: ['**/dto/**',
+							  '**/entity/**',
+							  '**/constant/**',
+							  'com/meli/challenge/*.class'
+					])
+		}))
+	}
+}
+
+build.dependsOn jacocoTestReport

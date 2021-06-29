@@ -72,11 +72,17 @@ Exponer un servicio extra “/stats” que devuelva un Json con las estadística
 
 La aplicación se desarrolló en Java 1.8, algunas características de la implementación fueron:
 	•	 Spring boot 2
+	
 	•	 Gradle  
+	
 	•	 Patrón MVC
+	
 	•	 Base de datos en memoria H2
+	
 	•	 JaCoCo
-	•	  Lombok
+	
+	•	 Lombok
+
 
 
 

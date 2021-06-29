@@ -8,23 +8,33 @@ Para eso te ha pedido crear un programa con un método o función con la siguien
 
 •	boolean isMutant(String[] dna); // Ejemplo Java
 En donde recibirás como parámetro un array de Strings que representan cada fila de una tabla de (NxN) con la secuencia del ADN. Las letras de los Strings solo pueden ser: (A,T,C,G), las cuales representa cada base nitrogenada del ADN.
-**
-No-Mutante**
+
+**No-Mutante**
 
 A T G C G A
+
 C A G T G C
-T T A T T T
+
+T  T A T T  T
+
 A G A C G G
+
 G C G T C A
-T C A C T G
-**
-Mutante**
+
+T C A  C T G
+
+**Mutante**
 
 A T G C G A
+
 C A G T G C
+
 T T A T G  T
+
 A G A A G G
+
 C C C C T  A
+
 T C A C T  G
 
 Sabrás si un humano es mutante, si encuentras más de una secuencia de cuatro letras iguales, de forma oblicua, horizontal o vertical. Ejemplo (Caso mutante):
@@ -44,17 +54,19 @@ En caso de verificar un mutante, debería devolver un HTTP 200-OK, en caso contr
 Anexar una base de datos, la cual guarde los ADN’s verificados con la API. Solo 1 registro por ADN.
 Exponer un servicio extra “/stats” que devuelva un Json con las estadísticas de las verificaciones de ADN: {"count_mutant_dna" : 40, "count_human_dna" : 100, "ratio" : 0.4 } Tener en cuenta que la API puede recibir fluctuaciones agresivas de tráfico (Entre 100 y 1 millón de peticiones por segundo). Test-Automáticos, Code coverage > 80%.
 
-### Configuración
 
-------------
+
+## Configuración
+
 
 
 
 -  Java 1.8
 
-### Implementación y desarrollo
 
-------------
+
+## Implementación y desarrollo
+
 
 
 
@@ -66,9 +78,10 @@ La aplicación se desarrolló en Java 1.8, algunas características de la implem
 	•	 JaCoCo
 	•	  Lombok
 
-### Ejecución
 
-------------
+
+## Ejecución
+
 
 
 
@@ -76,7 +89,7 @@ La aplicación se desarrolló en Java 1.8, algunas características de la implem
 
 Si se quiere ejecutar la aplicación en un entorno local, se pueden realizar de dos maneras:
 
-###### 1. Docker
+###### 1.1 Docker
 
 - Descargue la imagen
 
@@ -89,7 +102,7 @@ Si se quiere ejecutar la aplicación en un entorno local, se pueden realizar de 
 
     docker run -p 8080:8080 camilo1184/challenge-meli:challenge .
 
-2. Descargue las fuentes y ejecute el .jar generado desde una consola
+1.2 Descargue las fuentes y ejecute el .jar generado desde una consola
 
 - Descargue el proyecto del repositorio y ejecute en consola
 
@@ -111,9 +124,10 @@ La aplicación fue desplegada en los servicios de Amazon, generando la url para 
     http://challengemeli-env.eba-qgnimnum.us-east-2.elasticbeanstalk.com/challenge
 
 
-### Pruebas
 
-------------
+
+## Pruebas
+
 
 
 
@@ -124,9 +138,10 @@ En la carpeta /src/main/resources/postman dentro de las fuentes del proyecto enc
 
 
 
-### Servicios implementados
 
-------------
+
+## Servicios implementados
+
 
 
 
